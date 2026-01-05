@@ -1,0 +1,195 @@
+/* --- Card Container --- */
+.card {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  min-height: 100px;
+  background-color: white;
+  border-radius: 20px; /* Requested 20px Radius */
+  border: 1px solid #e4e4e7;
+  display: flex;
+  flex-direction: column;
+  cursor: default;
+  overflow: visible; /* Must be visible so dropdown can pop out */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+.body {
+  padding: 1.5rem;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #18181b;
+  line-height: 1.5;
+}
+
+/* --- Footer & Status Pills (MATCHING YOUR IMAGE) --- */
+.footer {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 24px; /* Generous padding like the image */
+  border-radius: 9999px; /* Capsule shape */
+  
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: capitalize; /* "in progress" -> "In Progress" */
+  
+  /* --- The Soft UI Look --- */
+  background-color: #ffffff; /* Pure white background */
+  color: #3f3f46; /* Default gray text */
+  
+  /* Soft Shadow + Subtle Border */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+  border: 1px solid #f3f4f6;
+  transform: translateY(5px);
+  
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: default;
+}
+
+/* Optional Lift Effect */
+.statusPill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Status Text Colors --- */
+/* The pill stays white, but the TEXT changes color */
+
+/* URGENT (Red Text) */
+.statusPill[data-status="URGENT"] {
+  color: #dc2626; /* Red 600 */
+  border-color: #fee2e2; /* Very subtle red border tint */
+}
+
+/* IN_PROGRESS (Amber Text) */
+.statusPill[data-status="IN_PROGRESS"] {
+  color: #d97706; /* Amber 600 */
+  border-color: #fef3c7; /* Very subtle amber border tint */
+}
+
+/* COMPLETED (Green Text) */
+.statusPill[data-status="COMPLETED"] {
+  color: #16a34a; /* Green 600 */
+  border-color: #dcfce7; /* Very subtle green border tint */
+}
+
+/* --- Menu Wrapper & Button --- */
+.menuWrapper {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 50;
+}
+
+.menuBtn {
+  width: 44px;
+  height: 28px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #71717a;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.menuBtn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #18181b;
+}
+
+.menuBtnActive {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+  transform: scale(0.95);
+}
+
+/* --- Dropdown (Refractive Frosted Glass) --- */
+.dropdown {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  width: 130px;
+
+  /* Frosted / Refractive Effect */
+  background: rgba(255, 255, 255, 0.65); /* High transparency */
+  backdrop-filter: blur(16px) saturate(200%); /* Blur + Saturation = Refraction */
+  -webkit-backdrop-filter: blur(16px) saturate(200%);
+
+  border-radius: 14px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  /* Border & Shadow for Depth */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+
+  /* Animation Start State */
+  opacity: 0;
+  transform: scale(0.8) translateY(-10px);
+  transform-origin: top right;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Animation Open State */
+.dropdownOpen {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* --- Menu Items --- */
+.menuItem {
+  background: transparent;
+  border: none;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #52525b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Specific Hover for Completed (Subtle Green) */
+.completeOption:hover {
+  background-color: #ecfdf5; /* Mint Green 50 */
+  color: #047857; /* Emerald 700 */
+}
+
+/* Specific Style for Delete */
+.delete {
+  color: #ef4444;
+}
+
+.delete:hover {
+  background: rgba(239, 68, 68, 0.08); /* Red tint */
+  color: #dc2626;
+}

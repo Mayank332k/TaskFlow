@@ -1,0 +1,130 @@
+/* --- CONTAINER --- */
+.card {
+  width: 100%;
+  max-width: 500px; /* Slightly wider for editing */
+  min-height: 300px;
+  background-color: white;
+  border-radius: 12px; /* Boxy corners */
+  border: 1px solid #e4e4e7; /* Zinc-200 */
+  
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  
+  /* The "Float" Shadow */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.08), 
+    0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* --- TEXT AREA --- */
+.textArea {
+  flex: 1; /* Takes up all available space */
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: 'Inter', sans-serif;
+  
+  /* Large, Bold Typography like the wireframe */
+  font-size: 2.5rem; 
+  font-weight: 500;
+  color: #18181b;
+  background: transparent;
+  line-height: 1.2;
+}
+
+.textArea::placeholder {
+  color: #d4d4d8; /* Very light grey placeholder */
+}
+
+/* --- FOOTER ROW --- */
+.footerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+/* --- LEFT: URGENT PILL --- */
+.urgentPill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid #e4e4e7;
+  background: white;
+  color: #71717a;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.urgentPill:hover {
+  border-color: #a1a1aa;
+  color: #18181b;
+}
+
+.urgentActive {
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+.urgentActive:hover {
+  background-color: #27272a;
+  color: white;
+}
+
+/* --- RIGHT: SPLIT NAV PILL (< | >) --- */
+.navPill {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #e4e4e7;
+  border-radius: 9999px; /* Full pill shape */
+  padding: 0.25rem;
+  height: 2.5rem;
+  
+  /* Optional: Float shadow for the button itself */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem; /* Circular touch target */
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: #71717a;
+  cursor: pointer;
+  border-radius: 50%; /* Circle hover effect */
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.navBtn:hover {
+  background-color: #f4f4f5;
+  color: black;
+}
+
+.navBtn:active {
+  background-color: #e4e4e7;
+  color: black;
+  transform: translateY(1px);
+}
+
+.divider {
+  width: 1px;
+  height: 60%;
+  background-color: #e4e4e7; /* Thin vertical line */
+  margin: 0 2px;
+}
