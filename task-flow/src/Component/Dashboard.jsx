@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./Dashboard.module.css";
 import Card from "./Card.jsx";
+import NoData from "./NoData.jsx";
 import { useTasks } from "../Store/Data-Context";
 const Icons = {
   check: (
@@ -92,9 +93,13 @@ function Dashboard({  setshowAddData }) {
         ))}
       </div>
       <div className={styles.cardContainer}>
-        {filteredData.map((task) => (
-          <Card key={task.id} task={task} />
-        ))}
+        {filteredData.length === 0 ? (
+          <div className="noDataWrapper">
+            <NoData />
+          </div>
+        ) : (
+          filteredData.map((task) => <Card key={task.id} task={task} />)
+        )}
       </div>
       <button
         className={styles.fab}

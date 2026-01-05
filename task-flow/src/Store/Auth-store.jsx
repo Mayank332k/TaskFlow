@@ -8,7 +8,7 @@ const AuthProvider = ({ children }) => {
     pass: "123",
   });
 
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
 
   return (
     <AuthContext.Provider

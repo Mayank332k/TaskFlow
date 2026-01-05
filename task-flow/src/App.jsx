@@ -17,7 +17,6 @@ function App() {
       {isAuth && (
         <TaskProvider>
           {!showAddData && <Dashboard setshowAddData={setshowAddData} />}
-
           {showAddData && (
             <div className="addDataContainer">
               <AddData
